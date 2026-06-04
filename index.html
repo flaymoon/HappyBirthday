@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday My Love 💖</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- ██ CANVAS PARTICLES ██ -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- ████████████████████████████
+     SCREEN 1 — LANDING
+████████████████████████████ -->
+<section id="s-landing" class="screen active">
+  <div class="landing-content">
+    <div class="crown-emoji">👑</div>
+    <p class="landing-eyebrow">— untuk cintaku —</p>
+    <h1 class="landing-title">
+      Happy<br><em>Birthday</em><br>My Love
+    </h1>
+    <div class="landing-hearts-row">
+      <span>💖</span><span>✨</span><span>💖</span>
+    </div>
+    <p class="landing-sub">Hari ini seluruh semesta merayakanmu,<br>karena kamu adalah hadiah terindah yang pernah ada.</p>
+    <button class="btn-glow" id="btnOpen">
+      <span class="btn-gift">🎁</span>
+      Open Your Surprise
+    </button>
+  </div>
+  <div class="floating-hearts" id="floatingHearts"></div>
+</section>
+
+<!-- ████████████████████████████
+     SCREEN 2 — LOVE LETTER
+████████████████████████████ -->
+<section id="s-letter" class="screen">
+  <div class="nav-dots" id="navDots"></div>
+  <div class="letter-scene">
+    <div class="envelope" id="envelope">
+      <div class="env-flap"></div>
+      <div class="env-body">
+        <div class="env-seal" id="envSeal">💌</div>
+      </div>
+    </div>
+    <div class="letter-paper" id="letterPaper">
+      <div class="letter-header">
+        <p class="letter-date" id="letterDate"></p>
+        <h3>Kepada Cinta Terindahku,</h3>
+      </div>
+      <p class="letter-text" id="letterText"></p>
+      <p class="letter-sign">Dengan segenap cinta,<br><em>Farel Arfiandra 💖</em></p>
+    </div>
+  </div>
+  <button class="btn-next" data-next="s-cake">Tiup Lilinnya sayangku! →</button>
+</section>
+<!-- ████████████████████████████
+     SCREEN 5 — BIRTHDAY CAKE
+████████████████████████████ -->
+<section id="s-cake" class="screen">
+  <div class="nav-dots"></div>
+  <div class="screen-header">
+    <p class="eyebrow">🎂 Untuk Kamu Sayangku</p>
+    <h2>Tiup <em>Lilinnya!</em></h2>
+  </div>
+  <div class="cake-scene">
+    <div class="cake-container" id="cakeContainer">
+      <!-- Candles -->
+      <div class="candles-row" id="candlesRow"></div>
+      <!-- Cake body -->
+      <div class="cake-body">
+        <div class="cake-top">
+          <div class="cake-decoration">🌸 Happy Birthday 🌸</div>
+        </div>
+        <div class="cake-mid"></div>
+        <div class="cake-bot"></div>
+        <div class="cake-plate"></div>
+      </div>
+    </div>
+    <p class="cake-hint" id="cakeHint">Klik lilin untuk meniupnya! 🌬️</p>
+    <div class="cake-message" id="cakeMessage" style="display:none">
+      <p>🎉 Semoga semua harapanmu terkabul! 🎉</p>
+    </div>
+  </div>
+  <button class="btn-next" data-next="s-reasons">Kenapa Aku Cinta Kamu →</button>
+</section>
+
+<!-- ████████████████████████████
+     SCREEN 6 — REASONS I LOVE YOU
+████████████████████████████ -->
+<section id="s-reasons" class="screen">
+  <div class="nav-dots"></div>
+  <div class="screen-header">
+    <p class="eyebrow">💖 Alasanku</p>
+    <h2>Kenapa Aku <em>Mencintaimu</em></h2>
+  </div>
+  <p class="reasons-hint">Klik kartu untuk membaliknya ✨</p>
+  <div class="flipcard-grid" id="flipcardGrid"></div>
+  <button class="btn-next" data-next="s-quiz">Quiz Kita →</button>
+</section>
+
+<!-- ████████████████████████████
+     SCREEN 7 — LOVE QUIZ
+████████████████████████████ -->
+<section id="s-quiz" class="screen">
+  <div class="nav-dots"></div>
+  <div class="screen-header">
+    <p class="eyebrow">🧠 Seberapa Kenal</p>
+    <h2>Quiz <em>Kita</em></h2>
+  </div>
+  <div class="quiz-container">
+    <div class="quiz-progress-bar"><div id="quizProgressFill"></div></div>
+    <div id="quizCard" class="quiz-card">
+      <p class="quiz-qnum" id="quizQNum">Pertanyaan 1/5</p>
+      <p class="quiz-question" id="quizQ"></p>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+    <div class="quiz-result" id="quizResult" style="display:none">
+      <div class="result-stars">⭐⭐⭐⭐⭐</div>
+      <h3 id="quizResultTitle"></h3>
+      <p id="quizResultMsg"></p>
+    </div>
+  </div>
+  <button class="btn-next" data-next="s-gift" style="display:none" id="btnAfterQuiz">Hadiah Istimewa →</button>
+</section>
+
+<!-- ████████████████████████████
+     SCREEN 8 — SURPRISE GIFT
+████████████████████████████ -->
+<section id="s-gift" class="screen">
+  <div class="nav-dots"></div>
+  <div class="screen-header">
+    <p class="eyebrow">🎁 Untuk Kamu</p>
+    <h2>Hadiah <em>Spesial</em></h2>
+  </div>
+  <div class="gift-scene">
+    <div class="gift-box-wrap" id="giftBoxWrap">
+      <div class="gift-box" id="giftBox">
+        <div class="gift-lid" id="giftLid">
+          <div class="gift-ribbon-h"></div>
+          <div class="gift-ribbon-v"></div>
+          <div class="gift-bow">🎀</div>
+        </div>
+        <div class="gift-base">
+          <div class="gift-ribbon-base-h"></div>
+          <div class="gift-ribbon-base-v"></div>
+        </div>
+        <div class="gift-lock" id="giftLock">🔒</div>
+      </div>
+    </div>
+    <p class="gift-hint" id="giftHint">Klik semua 💖 yang melayang untuk membuka hadiah!</p>
+    <div class="gift-hearts-float" id="giftHeartsFloat"></div>
+    <div class="gift-counter-wrap">
+      <span id="giftHeartsCount">0</span> / <span id="giftHeartsTotal">8</span> 💖 dikumpulkan
+    </div>
+    <div class="gift-reveal" id="giftReveal" style="display:none">
+      <p class="gift-reveal-text">🎁 Hadiah untukmu:</p>
+      <div class="gift-card-inner">
+        <h3>Satu Hari Penuh<br><em>Bersamamu</em> 🌟</h3>
+        <p>Pilih tempat favoritmu, aku akan menemanimu ke mana pun kamu mau — dinner romantis, jalan-jalan, atau hanya duduk berdua menikmati momen. Hari itu sepenuhnya milikmu. 💖</p>
+      </div>
+    </div>
+  </div>
+  <button class="btn-next" data-next="s-ending" id="btnToEnding" style="display:none">Penutup →</button>
+</section>
+
+<!-- ████████████████████████████
+     SCREEN 9 — FINAL ENDING
+████████████████████████████ -->
+<section id="s-ending" class="screen">
+  <canvas id="fireworksCanvas"></canvas>
+  <div class="ending-content">
+    <div class="ending-lines" id="endingLines">
+      <p class="eline" data-delay="0">Kamu adalah alasanku tersenyum setiap pagi.</p>
+      <p class="eline" data-delay="800">Kamu adalah rumah di tengah dunia yang ramai.</p>
+      <p class="eline" data-delay="1600">Kamu adalah cerita favoritku.</p>
+      <p class="eline" data-delay="2400">Dan hari ini, di hari ulang tahunmu,</p>
+      <p class="eline" data-delay="3200">aku ingin dunia tahu:</p>
+    </div>
+    <div class="ending-declaration" id="endingDeclaration" style="opacity:0">
+      <h2>Aku <em>Mencintaimu</em><br>Selamanya 💖</h2>
+    </div>
+    <button class="btn-yes" id="btnYes" style="opacity:0">
+      Yes, Always ❤️
+    </button>
+    <div class="ending-final" id="endingFinal" style="display:none">
+      <p>🎉 Selamat ulang tahun, cintaku! 🎉</p>
+      <p>Semoga tahun ini membawa semua kebahagiaan yang kamu layak dapatkan.</p>
+      <div class="ending-signature">— FAREL ARFIANDRA —</div>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
